@@ -3,38 +3,29 @@ package combustivel.consumo.contoller;
 import combustivel.consumo.entity.CombustivelEntity;
 
 public class CombustivelController {
-    CombustivelEntity combustivel;
-    /*    int prosseguir;
-        do {
-            System.out.println("Quantos KM o Carro Faz Por Litro");
-            gastoMedio = scan.nextFloat();
+    CombustivelEntity combustivel = new CombustivelEntity();
 
-            System.out.println("Quantos KM o Carro Vai Prosseguir");
-            distanciaPercorrida = scan.nextFloat();
+    public String valorGastoPorViagem(double distanciaPercorrida, float gastoMedio, float valorCobustivel) {
+        double gastoComBaseDistancia = distanciaPercorrida / gastoMedio;
+        double total = gastoComBaseDistancia * valorCobustivel;
+        return "Um trajeto de  " + distanciaPercorrida + " km. É necessário uma quantia de R$ " + total + " para cumprir o trajeto";
+    }
 
-            System.out.println("Qual o Valor do Combustivel");
-            valorCombustivel = scan.nextFloat();
+    public String consumoAteViagem(double distanciaPercorrida, float gastoMedio) {
+        combustivel.setGastoMedio(gastoMedio);
+        gastoMedio = combustivel.getGastoMedio();
+        double litrosComBaseNaDistancia = distanciaPercorrida / gastoMedio;
+        return "Para chegar ao destino, à " + distanciaPercorrida + " quilômetros\nVocê consumirá " + litrosComBaseNaDistancia + " Litros";
+    }
 
-            System.out.println("Qual a Capacidade Maxima do Tanque");
-            capacidadeTanque = scan.nextFloat();
+    public String paraCompletarTanque(float capacidadeTanque, float porcentageEstimatida, float valorCobustivel) {
+        combustivel.setCapacidadeTanque(capacidadeTanque);
+        capacidadeTanque = combustivel.getCapacidadeTanque();
+        double porcentagemConvertida = porcentageEstimatida / 100;
+        double restanteCompletar = capacidadeTanque - porcentagemConvertida;
+        // Calculo com base na capacidadeTanque, litros e  valor para completar
+        double total = valorCobustivel * restanteCompletar;
 
-            System.out.println("Para onde vamos hoje 'o'");
-            System.out.println("Digite (1) Para Calcular Quantos Reais o Carro Vai Gastar na Viagem");
-            System.out.println("Digite (2) Para Calcular Quantos Litros Gastos Ate Checar ao Local");
-            System.out.println("Digite (3) Para Calcular o Valor Total ao Encher o Tanque");
-            System.out.println("Digite (4) Com Base na Capacidade Atual, Quanto Falta para Completar o Tanque");
-
-            int opcao = scan.nextInt();
-*/
-    public static String valorGastoPorViagem(double distanciaPercorrida, float gastoMedio){
-        combustivel.
-        return "";}
-
-    public static String consumoAteViagem(double distanciaPercorrida, float gastoMedio){
-
-        return "";}
-
-    public static String paraCompletarTanque(float capacidadeTanque, float porcentageAtual){
-
-        return "";}
+        return "Um tanque com a capacidade máxima de " + capacidadeTanque + " Litros\nFica em torno de R$ " + total + " seu abastecimento completo\nCombustivel valor de R$ " + valorCobustivel;
+    }
 }
